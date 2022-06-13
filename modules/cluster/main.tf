@@ -7,10 +7,10 @@ resource "digitalocean_kubernetes_cluster" "main" {
   dynamic "node_pool" {
     for_each = var.cluster_nodepools
     content {
-      name       = node_pool.value.name
+      name       = node_pool.key
       size       = node_pool.value.size
       node_count = node_pool.value.node_count
-      tags       = node_pool.value.tags  
+      tags       = node_pool.value.tags
     }
   }
 }
